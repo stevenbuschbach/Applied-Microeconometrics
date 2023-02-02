@@ -1,0 +1,10 @@
+# Raw data
+*.dta
+
+# Anything in data files
+q4/qje_data/*
+q8/aer_data/*
+
+# XLSX files in AER dofiles
+q8/aer_dofile/*.xlsx
+q8/aer_dofile/*.xls

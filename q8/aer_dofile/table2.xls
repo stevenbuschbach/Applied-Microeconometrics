@@ -1,0 +1,16 @@
+VARIABLES	AMR: xtreg amr _Iyear* _IyeaXDu* _DD* [aw=popwt], cluster(fips) fe
+	
+_DDdid1_2	0.0339
+	2.847
+_DDdid1_4	-5.636
+	3.543
+_DDdid1_5	-12.05
+	4.573
+_DDdid1_6	-9.384
+	5.644
+Constant	940.7
+	2.288
+Observations	91770
+Number of fips	3059
+R-squared	0.824
+Robust standard errors in parentheses	
