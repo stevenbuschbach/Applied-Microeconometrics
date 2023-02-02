@@ -8,3 +8,5 @@ q8/aer_data/*
 # XLSX files in AER dofiles
 q8/aer_dofile/*.xlsx
 q8/aer_dofile/*.xls
+
+q*/.ipynb_checkpoints/

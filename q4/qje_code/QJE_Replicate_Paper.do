@@ -5,13 +5,14 @@ set matsize 2000
 set more off
 pause on
 
-*cd "C:\Users\Nico Voigtländer\Research\Persecution Perpetuated\Data and Regressions"
-use Dataset_QJE_Replicate.dta
+*cd "C:\Users\Nico VoigtlÃ¤nder\Research\Persecution Perpetuated\Data and Regressions"
+use ../qje_data/Dataset_QJE_Replicate_with_Cities.dta
 
-quietly{
-	gen exist1349=0 //indicates existence of Jewish community in 1349
+	// Indicates existence of Jewish community in 1349
+	gen exist1349=0 
 	replace exist1349=1 if judaica==1 | comm1349==1 
 	
+	/*
 	gen exist1349_noPog=0 //Jewish community in 1349, but no pogrom.
 	replace exist1349_noPog = 1 if exist1349==1 & pog1349==0
 	
@@ -20,77 +21,82 @@ quietly{
 	
 	gen pogsurvive1349=0 if pog1349~=. // Jewish community attacked but does not vanish as a conseqence of pogroms in 1349
 	replace pogsurvive1349=1 if pog1349==1 & vanish1349~=1
-	
+	*/
 	
 	*************Attacks before the Black Death:**************
 	
+	/*
 	foreach z in  rintfleisch1298 armleder1336 crusade1096 crusade1146 guterwerner1287 crusade1309 { 
 		recode `z' .=0
 	}
-		*Attacks before 1347
-		foreach z in  localpog1 localpog2 ritualmord1 ritualmord2 hostienfrevel1 hostienfrevel2 { 
-			gen `z'd = 0
-			replace `z'd =1 if `z'<=1347 & `z'~=. 
-		}
-		gen pogpre1347 = crusade1096+crusade1146+rintfleisch1298+armleder1336+guterwerner1287+crusade1309+ ///
-		localpog1d + localpog2d + ritualmord1d + ritualmord2d + hostienfrevel1d + hostienfrevel2d
-		drop localpog1d-hostienfrevel2d
-		gen pogpre1347d = 1 if pogpre1347>0
-		recode pogpre1347d .=0
-		label variable pogpre1347 "Number of attacks before the Black Death"	
-		label variable pogpre1347d "Dummy for attack(s) before the Black Death"
+	
+	*Attacks before 1347
+	foreach z in  localpog1 localpog2 ritualmord1 ritualmord2 hostienfrevel1 hostienfrevel2 { 
+		gen `z'd = 0
+		replace `z'd =1 if `z'<=1347 & `z'~=. 
+	}
+	gen pogpre1347 = crusade1096+crusade1146+rintfleisch1298+armleder1336+guterwerner1287+crusade1309+ ///
+	localpog1d + localpog2d + ritualmord1d + ritualmord2d + hostienfrevel1d + hostienfrevel2d
+	drop localpog1d-hostienfrevel2d
+	gen pogpre1347d = 1 if pogpre1347>0
+	recode pogpre1347d .=0
+	label variable pogpre1347 "Number of attacks before the Black Death"	
+	label variable pogpre1347d "Dummy for attack(s) before the Black Death"
+	
+	*Attacks between 1096 and 1347 -- includes crusades in 1096 and 1146 with altogether 16 attacks
+	foreach z in  localpog1 localpog2 ritualmord1 ritualmord2 hostienfrevel1 hostienfrevel2 { 
+		gen `z'd_1096 = 0
+		replace `z'd_1096 =1 if `z'<=1347 & `z'~=. & `z'>=1096
+	}
+	gen pog1096_1347 = crusade1096+crusade1146+rintfleisch1298+armleder1336+guterwerner1287+crusade1309+ ///
+	localpog1d_1096 + localpog2d_1096 + ritualmord1d_1096 + ritualmord2d_1096 + hostienfrevel1d_1096 + hostienfrevel2d_1096
+	drop localpog1d_1096-hostienfrevel2d_1096
+	gen pog1096_1347d = 1 if pog1096_1347>0
+	recode pog1096_1347d .=0
+	label variable pog1096_1347 "Number of attacks 1096-1347"	
+	label variable pog1096_1347d "Dummy for attack(s) 1096-1347"
 		
-		*Attacks between 1096 and 1347 -- includes crusades in 1096 and 1146 with altogether 16 attacks
-		foreach z in  localpog1 localpog2 ritualmord1 ritualmord2 hostienfrevel1 hostienfrevel2 { 
-			gen `z'd_1096 = 0
-			replace `z'd_1096 =1 if `z'<=1347 & `z'~=. & `z'>=1096
-		}
-		gen pog1096_1347 = crusade1096+crusade1146+rintfleisch1298+armleder1336+guterwerner1287+crusade1309+ ///
-		localpog1d_1096 + localpog2d_1096 + ritualmord1d_1096 + ritualmord2d_1096 + hostienfrevel1d_1096 + hostienfrevel2d_1096
-		drop localpog1d_1096-hostienfrevel2d_1096
-		gen pog1096_1347d = 1 if pog1096_1347>0
-		recode pog1096_1347d .=0
-		label variable pog1096_1347 "Number of attacks 1096-1347"	
-		label variable pog1096_1347d "Dummy for attack(s) 1096-1347"
+	*Attacks between 1175 and 1347
+	foreach z in  localpog1 localpog2 ritualmord1 ritualmord2 hostienfrevel1 hostienfrevel2 { 
+		gen `z'd_1175 = 0
+		replace `z'd_1175 =1 if `z'<=1347 & `z'~=. & `z'>=1175
+	}
+	gen pog1175_1347 = rintfleisch1298+armleder1336+guterwerner1287+crusade1309+ ///
+	localpog1d_1175 + localpog2d_1175 + ritualmord1d_1175 + ritualmord2d_1175 + hostienfrevel1d_1175 + hostienfrevel2d_1175
+	drop localpog1d_1175-hostienfrevel2d_1175
+	gen pog1175_1347d = 1 if pog1175_1347>0
+	recode pog1175_1347d .=0
+	label variable pog1175_1347 "Number of attacks 1175-1347"	
+	label variable pog1175_1347d "Dummy for attack(s) 1175-1347"
 		
-		*Attacks between 1175 and 1347
-		foreach z in  localpog1 localpog2 ritualmord1 ritualmord2 hostienfrevel1 hostienfrevel2 { 
-			gen `z'd_1175 = 0
-			replace `z'd_1175 =1 if `z'<=1347 & `z'~=. & `z'>=1175
-		}
-		gen pog1175_1347 = rintfleisch1298+armleder1336+guterwerner1287+crusade1309+ ///
-		localpog1d_1175 + localpog2d_1175 + ritualmord1d_1175 + ritualmord2d_1175 + hostienfrevel1d_1175 + hostienfrevel2d_1175
-		drop localpog1d_1175-hostienfrevel2d_1175
-		gen pog1175_1347d = 1 if pog1175_1347>0
-		recode pog1175_1347d .=0
-		label variable pog1175_1347 "Number of attacks 1175-1347"	
-		label variable pog1175_1347d "Dummy for attack(s) 1175-1347"
-		
-		*Attacks between 1225 and 1347
-		foreach z in  localpog1 localpog2 ritualmord1 ritualmord2 hostienfrevel1 hostienfrevel2 { 
-			gen `z'd_1225 = 0
-			replace `z'd_1225 =1 if `z'<=1347 & `z'~=. & `z'>=1225
-		}
-		gen pog1225_1347 = rintfleisch1298+armleder1336+guterwerner1287+crusade1309+ ///
-		localpog1d_1225 + localpog2d_1225 + ritualmord1d_1225 + ritualmord2d_1225 + hostienfrevel1d_1225 + hostienfrevel2d_1225
-		drop localpog1d_1225-hostienfrevel2d_1225
-		gen pog1225_1347d = 1 if pog1225_1347>0
-		recode pog1225_1347d .=0
-		label variable pog1225_1347 "Number of attacks 1225-1347"	
-		label variable pog1225_1347d "Dummy of attack(s) 1225-1347"
-	 	
+	*Attacks between 1225 and 1347
+	foreach z in  localpog1 localpog2 ritualmord1 ritualmord2 hostienfrevel1 hostienfrevel2 { 
+		gen `z'd_1225 = 0
+		replace `z'd_1225 =1 if `z'<=1347 & `z'~=. & `z'>=1225
+	}
+	gen pog1225_1347 = rintfleisch1298+armleder1336+guterwerner1287+crusade1309+ ///
+	localpog1d_1225 + localpog2d_1225 + ritualmord1d_1225 + ritualmord2d_1225 + hostienfrevel1d_1225 + hostienfrevel2d_1225
+	drop localpog1d_1225-hostienfrevel2d_1225
+	gen pog1225_1347d = 1 if pog1225_1347>0
+	recode pog1225_1347d .=0
+	label variable pog1225_1347 "Number of attacks 1225-1347"	
+	label variable pog1225_1347d "Dummy of attack(s) 1225-1347"
+	*/
 	
 	***************************************
-	
 	*Population approximation:
-	replace  pop33 =  n333pop if  pop33==. //Use values from 1933 election where Census data not available.
-	replace n245pop=c25pop/c33pop1*pop33 if n245pop==. // some missing values, city level approximated given data from 1933
+	// Use values from 1933 election where Census data not available.
+	replace pop33 = n333pop if pop33==. 
+	// some missing values, city level approximated given data from 1933 
+	replace n245pop = c25pop/c33pop1*pop33 if n245pop==. 
 	
+	/*
 	gen syndamordest=0
 	replace syndamordest =1 if syndam==1 | syndest==1
 	label variable syndamordest "synagogue damaged or destroyed"
 	replace syn33=1 if syn33==0 & betraum==1 //syndam and syndest are also coded ==1 if a prayer room (betraum) in smaller cities was attacked or destroyed. Thus: the indicator for an existing synagogue in 1933 must be adjusted 
 	label variable syn33 "synagogue or prayer room existed in 1933"
+	*/
 	
 	*Population Controls
 	gen logpop25c=ln(c25pop)
@@ -107,7 +113,6 @@ quietly{
 	label variable logpop333 "ln(Pop '33 - election data)"
 	label variable logpop33_dep "ln(Pop '33 - census)"
 	
-	
 	gen logpop1300 = ln(1000*pop_1300)
 	gen logpop1500 = ln(1000*pop_1500)
 	gen logpop1750 = ln(1000*pop_1750)
@@ -121,27 +126,31 @@ quietly{
 	label variable logjews25 "ln(# Jews '25)"
 	label variable logjews33 "ln(# Jews '33)"
 	label variable logjews39 "ln(# Jews '39)"
-
+	
 	*Religion controls
-	gen perc_PROT25=100*c25prot/c25pop
-	gen perc_CAT25=100*c25kath/c25pop
-	gen perc_JEW25=100*c25juden/c25pop
+	gen perc_PROT25= 100*c25prot/c25pop
+	gen perc_CAT25 = 100*c25kath/c25pop
+	gen perc_JEW25 = 100*c25juden/c25pop
 	gen perc_JEW33=100*jews33/pop33 //This is at the city-level!
 		replace perc_JEW33 = perc_JEW25  if perc_JEW33==1 //uses best-guess for one weird obs
-		replace perc_JEW33 = perc_JEW25 if perc_JEW33==. & perc_JEW25 ~=. & exist1349==1 // some missing values for cities with documented Jewish Communities...
+		// some missing values for cities with documented Jewish Communities...
+		replace perc_JEW33 = perc_JEW25 if perc_JEW33==. & perc_JEW25 ~=. & exist1349==1 
 	label variable perc_PROT25 "% Protestant '25"
 	label variable perc_CAT25 "% Catholic '25"
 	label variable perc_JEW25 "% Jewish '25"
 	label variable perc_JEW33 "% Jewish '33"
 	
+	/*
 	*Stuermer letters
 	gen stuermersum = stuer1+stuer2+stuer3 //sum of the three different categories
 	recode stuermersum .=0
 	gen log_stuermersum=ln(1+stuermersum)
 	gen stuermerper10K=stuermersum/(pop33/10000)
-	label variable log_stuermersum  "ln(1 + letters to Stürmer)"
-	label variable stuermerper10K  "ln(Letters to Stürmer per 10,000 inhabitants)"
+	label variable log_stuermersum  "ln(1 + letters to StÃ¼rmer)"
+	label variable stuermerper10K  "ln(Letters to StÃ¼rmer per 10,000 inhabitants)"
+	*/
 	
+	/*
 	*Deportations
 	gen logdeport=ln(1+deptotal)
 	gen prop_deport = 100*(deptotal/jews33)
@@ -179,7 +188,7 @@ quietly{
 	label variable pcNSDAP327 "City-level NSDAP vote, July 1932"
 	label variable pcNSDAP3211 "City-level NSDAP vote, November 1932"
 	label variable pcNSDAP333 "City-level NSDAP vote, March 1933"
-
+	*/
 	
 	*Labor Market controls
 	gen perc_Unemp33 = 100*c33erlos/c33erwp
@@ -216,19 +225,19 @@ quietly{
 	label variable perc_self25 "% Self-Employed '25"
 	label variable perc_self33 "% Self-Employed '33"
 	label variable perc_selfRT25 "% Self-Employed in retail and trade '25"
+	
 	*Hep-Hep riots:
 	gen hephep_all = hephep+hephep_instigated
 	label var hephep_all "Hep Hep Riots in 1819"
 
-}
-
+	qui{
 *%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%   Generate additional variables %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-quietly{
 *%%%%%%%%%%%% Generate Principal Component %%%%%%%%%%%%%%%%%%%%
 
 /*Obtain first principal component*/
-
+	
+/*
 	gen stdpog20s = pog20s/pop33
 	gen stdstuermer = stuermersum/pop33
 	gen stddeport = prop_deport/pop33
@@ -246,16 +255,20 @@ quietly{
 	predict PCA4, score
 	replace PCA_20C_AS = PCA4 if PCA_20C_AS==. & syn33==1
 	drop PCA2 PCA3 PCA4 
-
-//Normalize variables to obtain beta coefficients:
-	foreach var in PCA_20C_AS pog1349 logpop285 logpop33_dep perc_JEW25 perc_JEW33 perc_PROT25  perc_Blue33 perc_Ind33 perc_RT33 perc_selfRT25 { //all cities
+*/
+/*
+// Normalize variables to obtain beta coefficients:
+	foreach var in /*PCA_20C_AS*/ pog1349 /*logpop285 logpop33_dep*/ perc_JEW25 /*perc_JEW33*/ perc_PROT25  /*perc_Blue33 perc_Ind33 perc_RT33 perc_selfRT25 */{ 
+		//all cities
 		egen Std_`var' = std(`var') if pog1349~=.
 	}		
-	sum Std_*
+//sum Std_*
+*/
 
 *%%%%%%%%%%%% Other Characeteristics %%%%%%%%%%%%%%%%%%%%	
 	* From Jacob (2010): Hanseatic is a dummy that takes the value of one of the city historically was a member of the Hanseatic League, and zero otherwise. 
 	* 	Staufer is a dummy that takes the value of one if it was founded by the Hohenstaufen, and zero otherwise.gen inter_Han = pog1349*hanseatic	
+/*
 	gen inter_Han = pog1349*Hanse
 	gen inter_Free = pog1349*freeimperial
 	gen inter_bishop = pog1349*bishop
@@ -350,20 +363,20 @@ xtile Ind_Quartile=perc_Ind33 if exist1349==1, nq(2)
 		gen inter_open = std_PCAopen*pog1349
 	
 }	
-
+*/
 
 *%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%   Figures  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+/*
 *The deportation graph
 twoway (kdensity prop_deport if exist1349==1 & prop_deport<100 & pog1349==0 [aweight = pop33], bwidth(10) lcolor(black) lpattern(dash)) ///
 	(kdensity prop_deport if exist1349==1 & prop_deport<100 & pog1349==1 [aweight = pop33], bwidth(10) lcolor(black) lpattern(solid)), ///
 	ytitle(Kernel density) xtitle(Deportations per 100 Jews (in 1933)) legend(order(1 "No pogrom in 1349" 2 "Pogrom in 1349") position(1) ring(0)) scheme(s1color)
-
+*/
 
 *%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%   Analysis  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 //////////////////////////////////////////////// Descriptive Stats /////////////////////////////////////////////=
-
+/*
 *Table 1 -- Descriptive statistics -- restricted sample
 sum pop33 perc_JEW33 perc_PROT25 syn33 pog20 pcNSDAP285 pcDVFP245 deptotal stuermersum pog1349 if exist1349==1 & pog1349~=. // & perc_JEW33>0 (only affects one obs.)
 	sum syndamordest if syn33==1 & exist1349==1 & pog1349~=.  //for existing synagogue
@@ -417,9 +430,9 @@ tabstat pog1349, st(mean N) by(pog1349), if exist1349==1 & pog1349~=.
 *Table 5
 tab pog20 pog1349 if exist1349==1, column
 tab syndamordest pog1349 if exist1349==1 & syn33==1, column	
-	
+*/
 //////////////////////////////////////////////// Main Results /////////////////////////////////////////////	
-
+/*
 *For Stuermer in text:
 gen stuermer_pop = stuermersum/pop33
 sum stuermer_pop if exist1349==1 & pog1349==1 [weight=pop33]
@@ -427,11 +440,12 @@ sum stuermer_pop if exist1349==1 & pog1349==0 [weight=pop33]
 drop stuermer_pop //now calculate 1/mean to find people per letter
 
 sum stuermersum if exist1349==1 & pog1349~=. //-->3.77 letters on average.
-
+*/
 *Table 6
-
+}
 *Baseline regs
 eststo: reg pog20 pog1349 logpop25c perc_JEW25 perc_PROT25 if exist1349==1, robust cluster(kreis_nr)
+/*
 eststo: reg pcNSDAP285 pog1349 logpop285 perc_JEW25 perc_PROT25 if exist1349==1, robust cluster(kreis_nr)
 eststo: reg pcDVFP245 pog1349 logpop245 perc_JEW25 perc_PROT25 if exist1349==1, robust cluster(kreis_nr)
 eststo: glm deptotal pog1349 logpop33_dep logjews33 perc_JEW33 perc_PROT25 if exist1349==1, robust family(poisson)
@@ -441,9 +455,14 @@ esttab using table_Main1.rtf, se ar2 label nocons title (Main Results mtitles(OL
 eststo clear
 	*For footnote: controlling for pop33 and jew33 w/o logs yields stronger coefficients on pog1349 but worse fit overall. 
 	glm deptotal pog1349 pop33 jews33 perc_JEW33 perc_PROT25 if exist1349==1, robust family(poisson)
+*/
 
 *Matching
+*keep if exist1349==1
+*drop if mi(pog20) | mi(pog1349) | mi(logpop25c) | mi(perc_JEW25) | mi(perc_PROT25)
+*nnmatch pog20 pog1349 logpop25c perc_JEW25 perc_PROT25, m(4) robust(4) tc(att) keep("matched_data.dta") replace
 eststo: nnmatch pog20 pog1349 logpop25c perc_JEW25 perc_PROT25 if exist1349==1, m(4) robust(4) tc(att)  
+/*
 eststo: nnmatch pcNSDAP285 pog1349 logpop285 perc_JEW25 perc_PROT25 if exist1349==1, m(4) robust(4) tc(att) 
 eststo: nnmatch pcDVFP245 pog1349 logpop245 perc_JEW25 perc_PROT25 if exist1349==1, m(4) robust(4) tc(att)   
 eststo: nnmatch deptotal pog1349 logpop33_dep logjews33 perc_JEW33 perc_PROT25 if exist1349==1, m(4) robust(4) tc(att)  
@@ -451,9 +470,13 @@ eststo: nnmatch stuermersum pog1349 logpop33_dep perc_JEW33 perc_PROT25 if exist
 eststo: nnmatch syndamordest pog1349 logpop33_dep perc_JEW33 perc_PROT25 if exist1349==1 & syn33==1, m(4) robust(4) tc(att) 
 esttab using table_Main2.rtf, se ar2 label nocons title (Main Results mtitles(ME ME ME ME ME ME))  star(* 0.10 ** 0.05 *** 0.01) replace
 eststo clear
+*/
 
 *Geo-Matching
 eststo: nnmatch pog20 pog1349 Latitude Longitude if exist1349==1, m(2) robust(2) tc(att) keep(geomatch1M, replace) 
+
+qui{
+/*
 eststo: nnmatch pcNSDAP285 pog1349 Latitude Longitude if exist1349==1, m(2) robust(2) tc(att) keep(geomatch2M, replace) 
 eststo: nnmatch pcDVFP245 pog1349 Latitude Longitude if exist1349==1, m(2) robust(2) tc(att) keep(geomatch3M, replace) 
 eststo: nnmatch deptotal pog1349 Latitude Longitude jews33 if exist1349==1, m(2) robust(2) tc(att) keep(geomatch4M, replace) 
@@ -461,11 +484,11 @@ eststo: nnmatch stuermersum pog1349 Latitude Longitude pop33 if exist1349==1, m(
 eststo: nnmatch syndamordest pog1349 Latitude Longitude if exist1349==1 & syn33==1, m(2) robust(2) tc(att) keep(geomatch6M, replace) 
 esttab using table_Main3.rtf, se ar2 label nocons title (Main Results mtitles(GeoMatch GeoMatch GeoMatch GeoMatch GeoMatch GeoMatch))  star(* 0.10 ** 0.05 *** 0.01) replace
 eststo clear
-
+*/
 	
 //////////////////////////////////////////////// Principal component and full sample /////////////////////////////////////////////	
 *Table 7
-
+/*
 *Baseline regs with further controls
 eststo: reg Std_PCA_20C_AS pog1349 Std_logpop33_dep Std_perc_JEW33 Std_perc_PROT25 if exist1349==1, robust cluster(kreis_nr)
 eststo: reg Std_PCA_20C_AS pog1349 Std_logpop33_dep Std_perc_JEW33 Std_perc_PROT25 Std_perc_Blue33 Std_perc_Ind33 Std_perc_selfRT25 if exist1349==1, robust cluster(kreis_nr)
@@ -643,4 +666,6 @@ eststo: reg Std_PCA_20C_AS Std_dens_pog1349 Std_pc_AssaultBatt pc_Theft Std_logp
 
 
 restore
+*/
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+}
