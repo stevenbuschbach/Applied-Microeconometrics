@@ -1,0 +1,1047 @@
+1. Respondent_id : z902085
+
+	- name == 
+	- jikokoa == 1
+	- price_KSH == 1109
+	- bdmweekly == 94
+	- midline_date == 25 May 2019
+	- treatc2 == 1
+	- f_payphone == *******
+	- hhphone == *******
+	- f_payname == *******
+
+Context:
+In the payments data, we succesfully match six payments to the respondent's f_payphone.
+However, in the April payment data we observe one payment of 94 KSH on 2 June 2019 that 
+was made by the respondent's hhphone, i.e. *******. If we attribute this payment to 
+respondent z902085, then the sum of total payments for the respondent would be 1165 KSH, 
+which would exceed the respondent's BDM price of 1109.
+
+Suggestion:
+I think there is every indication that the respondent z902085 has made this payment of 94 KSH 
+on 2 June 2019 from the phone number ********. We should change the phone number associated 
+with this payment in the April data to f_payphone == **********.
+
+Decision: 
+Implemented suggestion.
+
+------------------------------------------------------------
+
+2. Respondent_id : 3a8b663
+
+	- name == 
+	- jikokoa == 1
+	- price_KSH == 438
+	- bdmweekly == 37
+	- midline_date == 3 June 2019
+	- treatc2 == 1
+	- f_payphone == *******
+	- hhphone == *******
+
+Context:
+In the payments data we see two payments:
+
+	- f_payphone: *******
+	- PAYdate: 6 June 2019
+	- RESPONDENT: *******
+	- AMOUNTPAID: 300
+
+	- f_payphone: *******
+	- PAYdate: 9 June 2019
+	- RESPONDENT: *******
+	- AMOUNTPAID: 140
+
+Neither of these payments is currently associated with respondent 3a8b663. I think both of these
+payments were in fact made by respodent 3a8b663 even though the combined payment of 440 KSH exceeds
+the price_KSH of respondent 3a8b663 which is 438 KSH. 
+
+Suggestion:
+Change respondent 3a8b663 f_payphone to the respodnet's hhphone value, 
+i.e. f_payphone = ****** if respondent_id == 3a8b663
+
+Decision:
+Implemented suggestion.
+
+------------------------------------------------------------
+
+3. Respondent_id : 70ba83b
+
+	- name == *******
+	- jikokoa == 1
+	- price_KSH == 2645
+	- bdmmonthly == 899
+	- midline_date == 21 May 2019
+	- treatc2 == 2
+	- f_payphone == *******
+	- hhphone == *******
+
+Context:
+In the April payments data we see the following payment that is unmatched: 
+
+	- f_payphone: 
+	- PAYdate: 18 June 2019
+	- RESPONDENT: PHONE_NOT_FOUND_*******
+	- AMOUNTPAID: 882
+
+I think the respondent 70ba83b used their hhphone ********* to complete the first
+installment of their monthly payments.
+
+Suggestion: 
+Change respondent 70ba83b f_payphone to the respondent's hhphone value, 
+i.e. f_payphone = "***********" if respondent_id == 70ba83b
+
+Decision: 
+Implemented suggestion.
+
+------------------------------------------------------------
+
+4. Respondent_id : 927623a
+
+	- name == 
+	- jikokoa == 1
+	- price_KSH == 2585
+	- bdmmonthly == 743
+	- midline_date == 30 May 2019
+	- treatc2 == 2
+	- f_payphone == 
+	- hhphone == 
+
+Context:
+We successfully match one payment from the December data to respondent 927623a f_payphone;
+the payment was 400 KSH made on 30 May 2019 from **********.
+
+However, in the April data we observe 5 payments from ************** which is respondent 927623a
+hhphone. These payments are as follows: 
+	
+	- 400 KSH on 8 June 2019
+	- 200 KSH on 13 June 2019
+	- 143 KSH on 23 June 2019
+	- 400 KSH on 28 July 2019
+	- 500 KSH on 2 March 2020
+
+I think that the respondent 927623a used their f_payphone == ************ for the initial monthly
+installment on the date of the midline survey, but then continued making payments using their 
+hhphone == **********.
+
+Suggestion:
+Change the phone number associated with these five payments in the April data from *********** to 
+***********, i.e. f_payphone = *********** if f_payphone == ***********.
+
+Decision: 
+Implemented suggestion.
+
+------------------------------------------------------------
+
+5. Respondent_id : df88faa
+
+	- name == *******
+	- jikokoa == 1
+	- price_KSH == 2583
+	- bdmmonthly == 708
+	- midline_date == 11 June 2019
+	- treatc2 == 2
+	- f_payphone == *******
+	- hhphone == *******
+
+Context:
+We have successfully matched four payments using respondent df88faa f_payphone. However, in the April 
+data there is a payment with the following information: 
+
+	- f_payphone: *******
+	- PAYdate: 31 July 2019
+	- RESPONDENT: *******
+	- AMOUNTPAID: 531
+
+It seems that the respondent df88faa has completed this payment with the phone number that 
+they have listed as an hhphone *******.
+
+
+Suggestion: 
+Change the phone numer associated with this payment in the April data from ******* to *******,
+i.e. f_payphone = ******* if f_payphone == *******.
+
+Decision:
+Implemented suggestion.
+
+------------------------------------------------------------
+
+6. Respondent_id : a104d2f
+
+	- name == *******
+	- f_payname == *******
+	- jikokoa == 1
+	- price_KSH == 1095
+	- bdmweekly == 93
+	- midline_date == 13 June 2019
+	- treatc2 == 2
+	- f_payphone == *******
+	- hhphone == *******
+
+Context:
+We have matched five payments from the December data with respondent a104d2f f_payphone *******.
+All of these payments were for 93 KSH and were made one week apart starting 3 July 2019. However, 
+in the April data, there is the following paymnet: 
+
+	- f_payphone: *******
+	- PAYdate: 19 June 2019
+	- RESPONDENT: PHONE_NOT_FOUND_*******
+	- AMOUNTPAID: 93
+
+Suggestion:
+Because the date and AMOUNTPAID correspond to the schedule and bdmweekly of respondent a104d2f, I 
+think we should change the f_payphone associated with this payment in the April data, i.e.
+f_payphone = ******* if f_payphone == *******.
+
+Decision:
+Implemented suggestion.
+
+------------------------------------------------------------
+
+7. Respondent_id : 7c916b0
+
+	- name == *******
+	- jikokoa == 1
+	- price_KSH == 1059
+	- bdmweekly == 90
+	- midline_date == 5 June 2019
+	- treatc2 == 1
+	- f_payphone == *******
+	- hhphone == *******
+
+Context:
+There are no payments from the payments data matched with f_payphone == *******. However, there is 
+a payment in the April data associated with the phone number *******:
+
+	- f_payphone: *******
+	- PAYdate: 15 July 2019
+	- RESPONDENT: *******
+	- AMOUNTPAID: 90
+
+Suggestion:
+Change the number associated with the payment in the April data, i.e 
+f_payphone = ******* if f_payphone == *******.
+
+Decision: 
+Implemented suggestion.
+
+------------------------------------------------------------
+
+8. Respondent_id : 595b311
+
+	- name == *******
+	- f_payname == *******
+	- jikokoa == 1
+	- price_KSH == 1152
+	- bdmweekly == 98
+	- midline_date == 10 June 2019
+	- treatc2 == 1
+	- f_payphone == *******
+	- b_phoneb1 == *******
+
+Context: 
+Currently, the respondent 595b311 doesn't have any payments associated with them. However, there
+are five payments in the April data made from ******* by PHONE_NOT_FOUND_*******
+
+	- 200 KSH on 16 June 2019
+	- 450 KSH on 30 June 2019
+	- 150 KSH on 18 July 2019
+	- 400 KSH on 24 July 2019
+
+Combining all of these payments, the total is 1200 KSH which exceeds the the bdm price for the stove,
+but based on the phone numbers in the data, I think these payments should be attributed to 595b311.
+
+Suggestion:
+Change the phone number for the payments in the April data,
+i.e. f_payphone = ******* if f_payphone == *******.
+
+Decision:
+Implemented suggestion.
+
+------------------------------------------------------------
+
+9. Respondent_id : 022705c
+
+	- name == *******
+	- jikokoa == 1
+	- price_KSH == 1095
+	- bdmmonthly == 372
+	- midline_date == 3 June 2019
+	- treatc2 == 2
+	- f_payphone == *******
+	- b_phoneb1 == *******
+
+Context:
+No payments currently associated with 022705c. The following payment is in the April data:
+
+	- f_payphone: *******
+	- PAYdate: 15 July 2019
+	- RESPONDENT: *******
+	- AMOUNTPAID: 1095
+
+This payment matches respondent 022705c price. It was made by one of 022705c alternative phones. 
+
+Suggestion: 
+Change the phone associated with the payment in the April data,
+i.e. f_payphone = ******* if f_payphone == *******
+
+Decision:
+Implemented suggestion.
+
+------------------------------------------------------------
+
+10. Respondent_id : 85b7657
+
+	- name == *******
+	- jikokoa == 1
+	- price_KSH == 1591
+	- bdmmonthly == 541
+	- midline_date == 28 May 2019
+	- treatc2 == 2
+	- f_payphone == *******
+	- b_phoneb1 == *******
+
+Context:
+There is one payment in December matched with f_payphone == *******. However, in the April data,
+there is a payment: 
+	
+	- f_payphone: *******
+	- PAYdate: 26 July 2019
+	- RESPONDENT: PHONE_NOT_FOUND_*******
+	- AMOUNTPAID: 541
+
+The amount of the payment suggests that respondent 85b7657 has made the payment using their
+b_phoneb1 *******.
+
+Suggestion: 
+Change the phone number in the April data payment, 
+i.e. f_payphone = ******* if f_payphone == *******
+
+Decision:
+Implemented suggestion.
+
+------------------------------------------------------------
+
+11. Respondent_id : 8acd8zf
+	
+	- name == *******
+	- jikokoa == 1
+	- price_KSH == 1171
+	- bdmweekly == 100
+	- midline_date == 5 June 2019
+	- treatc2 == 1
+	- f_payphone == *******
+	- b_phoneb1 == *******
+
+Context: 
+Currently, there are no payments associated with respondent 8acd8zf. However, in the April data, 
+there are six payments made from ******* by PHONE_NOT_FOUND_*******
+
+	- 100 KSH on 7 June 2019
+	- 100 KSH on 10 June 2019
+	- 100 KSH on 12 June 2019
+	- 600 KSH on 21 June 2019
+	- 200 KSH on 25 June 2019
+	- 120 KSH on 28 June 2019
+
+The sum of these payments is 1220 which exceeds respondent 8acd8zf bdm price of 1171.
+
+Suggestion:
+Change the f_payphone of respondent 8acd8zf,
+i.e. f_payphone = ******* if respondent_id == *******
+
+Decision:
+Implemented suggestion.
+
+------------------------------------------------------------
+
+12. Respondent_id : z3z51aa
+
+	- name == 
+	- f_payname == 
+	- jikokoa == 1
+	- price_KSH == 1173
+	- bdmweekly == 100
+	- midline_date == 4 June 2019
+	- treatc2 == 1
+	- f_payphone == *******
+	- b_phoneb1 == *******
+
+Context:
+There is one payment in the April data: 
+	
+	- f_payphone: *******
+	- PAYdate: 20 July 2019
+	- RESPONDENT: PHONE_NOT_FOUND_*******
+	- AMOUNTPAID: 200
+
+It seems that it is possible that this payment was made by respondent z3z51aa.
+
+Suggestion: 
+Change the f_payphone associated with the payment in the April data,
+i.e. f_payphone = ******* if f_payphone == *******.
+
+Decision: 
+Implemented suggestion.
+
+------------------------------------------------------------
+
+13. Respondent_id : 8c724db
+
+	- name == 
+	- jikokoa == 1
+	- price_KSH == 2628
+	- bdmmonthly == 893
+	- midline_date == 7 June 2019
+	- treatc2 == 2
+	- f_payphone == *******
+ 	- b_phoneb1 == *******
+
+Context: 
+There are two payments matched with respondent 8c724db. However, in the April data:
+
+	- f_payphone: *******
+	- PAYdate: 29 August 2019
+	- RESPONDENT: PHONE_NOT_FOUND_*******
+	- AMOUNTPAID: 900
+
+This payment seems to correspond to both the schedule and bdmweekly of respondent 8c724db.
+I think we should associate this payment with respondent 8c724db.
+
+Suggestion:
+Change the phone of this payment in the April data, 
+i.e. f_payphone = ******* if f_payphone == *******.
+
+Decision:
+Implemented suggestion.
+
+------------------------------------------------------------
+
+14. Respondent_id : 7b13769
+
+	- name == *******
+	- f_payname == *******
+	- jikokoa == 1
+	- price_KSH == 909
+	- bdmmonthly == 0
+	- midline_date == 11 June 2019
+	- treatc2 == 0
+	- f_payphone == *******
+	- b_phoneb1 == *******
+
+Context: 
+There is a payment in the December data:
+	
+	- f_payphone: *******
+	- PAYdate: 4 September 2019
+	- RESPONDENT: *******
+	- AMOUNTPAID: 1000
+
+And in the April data:
+
+	- f_payphone: *******
+	- PAYdate: 11 June 2019
+	- RESPONDENT: PHONE_NOT_FOUND_*******
+	- AMOUNTPAID: 909
+
+Currently, the December payment is matched to respondent 7b13769, but the April payment is not. 
+It seems that the payment from the April data matches exactly the PAYdate and AMOUNTPAID for 
+respondent 7b13769. 
+
+Suggestion: 
+So far we are keeping both payments for the respondent. 
+
+Decision: 
+Implemented suggestion.
+
+------------------------------------------------------------
+
+15. Respondent_id : caf3z35
+
+	- name == *******
+	- jikokoa == 1
+	- price_KSH == 2549
+	- bdmmonthly == 867
+	- midline_date == 20 May 2019
+	- treatc2 == 2
+	- f_payphone == *******
+	- f_payname == *******
+	
+	
+Context:
+There are two payments in the April data. The first one we currently match to respondent caf3z35.
+Matched payment: 
+
+	- f_payphone: *******
+	- PAYdate: 17 July 2019
+	- RESPONDENT: *******
+	- AMOUNTPAID: 870
+
+Unmatched payment:
+
+	- f_payphone: *******
+	- PAYdate: 17 June 2019
+	- RESPONDENT: PHONE_NOT_FOUND_*******
+	- AMOUNTPAID: 867
+
+I think that the unmatched payment was clearly made by respondent caf3z35 because of the AMOUNTPAID
+and PAYdate that we see in the data. 
+
+Suggestion:
+Change the phone number associated with the unmatched payment in the April data,
+i.e. f_payphone = ******* if f_payphone == *******
+
+Decision: 
+Implemented suggestion.
+
+------------------------------------------------------------
+
+16. Respondent_id : az2b5z6
+
+	- name == *******
+	- jikokoa == 1
+	- price_KSH == 1051
+	- bdmweekly == 89 
+	- midline_date == 31 May 2019
+	- treatc2 == 1
+	- f_payphone == *******
+	- f_payname == *******
+
+Context:
+We are currently matching one payment to the respondent: 
+
+	- f_payphone: *******
+	- PAYdate: 5 June 2019
+	- RESPONDENT: *******
+	- AMOUNTPAID: 89
+
+However, there are four other payments in the April data from the phone number *******
+by PHONE_NOT_FOUND_*******:
+
+	- 267 KSH on 28 June 2019
+	- 89 KSH on 17 July 2019
+	- 150 KSH on 16 July 2019
+	- 89 KSH on 2 Sep 2019
+
+Suggestion:
+Change the f_payphone associated with these four payments. 
+
+Decision:
+Implemented suggestion.
+
+------------------------------------------------------------
+
+17. Respondent_id : 6z8b158
+
+	- name == *******
+	- jikokoa == 1
+	- price_KSH == 1091
+	- bdmweekly == 67
+	- midline_date == 17 May 2019
+	- treatc2 == 1
+	- f_payphone == *******
+	- mpesa_comments == "For the last two weeks she has paid using her daughter's number *******"
+
+Context:
+There are currently four payments matched to f_payphone *******. However, there are five payments in the April
+data that are associated with *******, i.e. the phone of the respondent's daughter:
+
+	- 67 KSH on 7 June 2019
+	- 67 KSH on 15 June 2019
+	- 67 KSH on 22 June 2019
+	- 134 KSH on 15 July 2019
+	- 268 KSH on 9 Aug 2019
+
+Suggestion:
+Change the f_payphone associated with these payments to *******. 
+
+Decision:
+Implemented suggestion.
+
+------------------------------------------------------------
+
+18. Respondent_id : 0b7a749
+
+	- name == *******
+	- jikokoa == 1
+	- price_KSH == 2504
+	- bdmweekly == 213 
+	- midline_date == 10 June 2019
+	- treatc2 == 1
+	- f_payphone == *******
+	- mpesa_name == *******
+
+Context: 
+Currently there are no payments associated with this respondent. However, there are three payments in the April data
+from ******* by PHONE_NOT_FOUND_*******:
+	
+	- 500 KSH on 7 July 2019
+	- 500 KSH on 22 July 2019
+	- 1504 KSH on 3 Sep 2019
+
+Even though these payments do not match the weekly or monthly bdm prices for respondent 0b7a749, the total sum 
+of the payments exactly matches the respondent's price_KSH of 2504. Moreover, the mpesa_name for respondent 0b7a749
+is *******.
+
+Suggestion:
+Change the f_payphone of respondent 0b7a749 to *******.
+
+Decision:
+Implemented suggestion.
+
+------------------------------------------------------------
+
+19. Respondent_id : 9f5b0a8
+    Respondent_id : 57f5cb2
+
+
+	- respondent_id == 9f5b0a8
+	- name_legal == *******
+	- jikokoa == 1
+	- price_KSH == 2590
+	- bdmweekly == 220
+	- midline_date == 23 May 2019
+	- treatc2 == 1
+	- f_payphone == *******
+	- mpesa_comments == "She has paid a total of Ksh. 2,000 but she has been getting texts that he is not paying on time."
+
+	- respondent_id == 57f5cb2
+	- name_legal == *******
+	- jikokoa == 1
+	- price_KSH == 1122
+	- bdmweekly == 95
+	- treatc2 == 1
+	- midline_date == 23 May 2019
+	- f_payphone == *******
+	- v1_newname == " (this is also a selected respondent,note that two payments will be made to this number both for **** and ****)"
+	- sms_newnumber_v3 == *******
+	- sms_newnumber2_v3 == *******
+
+There are three payments that are currently matched:
+
+	- f_payphone == *******
+	- AMOUNTPAID == 100
+	- PAYdate == 30 May 2019
+
+	- f_payphone == *******
+	- AMOUNTPAID == 220
+	- PAYdate == 30 May 2019
+	
+	- f_payphone == *******
+	- AMOUNTPAID == 500
+	- PAYdate == 19 June 2019
+
+There are two additional payments in the April data:
+	
+	- f_payphone == *******
+	- AMOUNTPAID == 95 
+	- PAYdate == 7 June 2019
+
+	- f_payphone == *******
+	- AMOUNTPAID == 200
+	- PAYdate == 14 June 2019
+
+Suggestion:
+Associate the f_payphone for the 95 KSH payment on 7 June 2019 with respondent 57f5cb2.
+After looking at the sms_newnumber_v3 and sms_newnumber2_v3 of respondent 57f5cb2, 
+both of these variables match the f_payphone in the April data, i.e. *******.
+Associate the f_payphone for the 200 KSH payment on 14 June 2019 with respondent 57f5cb2.
+
+P.S. Associate the f_payphone for the 100 KSH payment from the December data with respondent 57f5cb2. 
+
+Decision:
+Implemented suggestion.
+
+------------------------------------------------------------
+
+20. Respondent_id : 3c5ddaa
+
+	- name_legal == *******
+	- jikokoa == 1
+	- price_KSH == 1161
+	- bdmweekly == .
+	- midline_date == 30 May 2019
+	- treatc2 == 0
+	- f_payphone == *******
+	- f_payname == *******
+
+Context:
+There are no payments matched right now, but there is a payment in the data:
+
+	- f_payphone: *******
+	- PAYdate: 30 May 2019
+	- RESPONDENT: PHONE_NOT_FOUND_*******
+	- AMOUNTPAID: 1161
+
+Suggestion:
+There is sufficient evidence to connect this payment to respondent 3c5ddaa.
+
+Decision:
+Implemented suggestion.
+
+------------------------------------------------------------
+
+21. Respondent_id : 45z8081
+
+	- name_legal == *******
+	- jikokoa == 1
+	- price_KSH == 1165
+	- bdmweekly == .
+	- midline_date == 11 June 2019
+	- treatc2 == 0
+	- f_payphone == *******
+	- f_payname == *******
+
+Context:
+There are no payments currently matched, but there is a payment in the April data:
+
+	- f_payphone: *******
+	- PAYdate: 11 June 2019
+	- RESPONDENT: PHONE_NOT_FOUND_*******
+	- AMOUNTPAID: 1165
+
+Suggestion:
+There is sufficient name, date, and amount evidence to match this payment to respondent 45z8081.
+
+Decision:
+Implemented suggestion.
+
+------------------------------------------------------------
+
+22. Respondent_id : 9cbaa4z
+
+	- name_legal == *******
+	- jikokoa == 1
+	- price_KSH == 1100
+	- bdmmonthly == 374
+	- midline_date == 31 May 2019
+	- treatc2 == 2
+	- f_payphone == *******
+	- b_phoneb1 == *******
+	
+Context:
+No currently matched payments. There is a payment in the April data: 
+
+	- f_payphone: *******
+	- PAYdate: 29 June 2019
+	- RESPONDENT: *******
+	- AMOUNTPAID: 550
+
+Suggestion: 
+Based on the name in the RESPONDENT variable of the payment entry and on the PAYdate, 
+it seems possible that this payment is associated with respondent 9cbaa4z.
+
+Decision:
+Implemented suggestion.
+
+------------------------------------------------------------
+
+23. Respondent_id : 670bf58
+
+The decision was made for respondent 670bf58 to drop from payments and survey data because case is too unclear in terms of their responses.
+
+	// The respondent appears in the payments data with a f_payphone == "*******", 
+	// which is also v1_phone_number in the survey data. However, the respondent's jikokoa 
+	// variable has a value of 0, and thus this observation is dropped before the merge on 
+	// line 356 of 4.PaymentsData.do. Furthermore, g_jikokoa == . adnd el1_g_jikokoa == . even 
+	// though Visit3 and Endline1 did happen for the respondent; it seems that the respondent 
+	// had two Visit2s according to g_c4_comments == "wa survey twice  during visit 2, and 
+	// during the first round she did not get a jikokoa but during the second round she got 
+	// the jikokoa at a price of 1060 and she has now been using the jikokoa but was advised to take the jiko"
+	
+
+
+December Data:
+	drop if f_payphone == "*******" | f_payphone == "*******"
+
+April Data:
+	drop if f_payphone == "*******" | f_payphone == "*******"
+
+Decision:
+Drop from survey and payments data.
+
+------------------------------------------------------------
+
+24. Respondent_id : 5722f55
+
+	- name_legal ==  *******
+	- jikokoa == 1
+	- price_KSH == 2514
+	- bdmmonthly == 214
+	- midline_date == 30 May 2019
+	- treatc2 == 1
+	- f_payphone == *******
+	- mpesa_name == 
+	- mpesa_comments == The respondent has paid twice using her number *******, and once using her husband's number *******- both accounts are registered on the same name *******
+
+Context:
+We are currently matching three payments with the respondent's phone, but there
+is one payment in the April data corresponding to the husband's phone:
+
+	- f_payphone: *******
+	- PAYdate: 22 June 2019
+	- RESPONDENT: PHONE_NOT_FOUND_*******
+ 	- AMOUNTPAID: 80
+
+Suggestion:
+Change the f_payphone associated with the husband's payphone to f_payphone == *******.
+
+Decision: 
+Implemented suggestion.
+
+------------------------------------------------------------
+
+25. Respondent_id : 0897f55
+
+	- f_payphone == "*******"
+	- h_note == "She gave us the wrong alternative number, kindly change her alternative number is *******"
+
+Context:
+There is an additional payment from her alternative phone number even though 
+she has already completed the payment of her entire bdm price. 
+
+Suggestion:
+Change the f_payphone of the additional payment to the respondent's f_payphone. 
+
+Decision:
+Implemented suggestion.
+
+------------------------------------------------------------
+
+26. Respondent_id : 047bz69
+
+	- name_legal == ""
+	- hhname == ""
+	- v1_payname == 
+	- price_KSH == 1161
+	- Visit2 == 0
+	- jikokoa == .
+	- v1_phone_number == "*******"
+
+
+Context:
+There are 3 payments from ******* made by PHONE_NOT_FOUND_*******
+in the April data:
+	
+	- 300 KSH on 23 May 2019
+	- 300 KSH on 20 June 2019
+	- 450 KSH on 20 Aug 2019
+
+Suggestion:
+Because this respondent does not seem to have had a second visit, drop these payments from the data.
+
+Decision: 
+Implemented suggestion.
+
+------------------------------------------------------------
+
+27. Respondent_id : 2bd040z
+
+	- name_legal == ""
+	- hhname == ""
+	- v1_payname == 
+	- price_KSH == 1082
+	- Visit2 == 0
+	- jikokoa == .
+	- v1_phone_number == "*******"
+
+Context:
+There are 3 payments from ******* made by PHONE_NOT_FOUND_*******
+in the April data:
+	
+	- 184 KSH on 10 June 2019
+	- 184 KSH on 26 June 2019
+	- 184 KSH on 22 July 2019
+
+Suggestion:
+Because this respondent does not seem to have had a second visit, drop these payments from the data.
+
+Decision: 
+Implemented suggestion.
+
+------------------------------------------------------------
+
+28. Respondent_id : 9b5c179
+
+	- name ==
+	- jikokoa == 1
+	- price_KSH == 1735
+	- bdmweekly == 105
+	- midline_date == 22 May 2019
+	- treatc2 == 1
+	- f_payphone == *******
+	- smsphone == *******
+	- mpesa_comment == The number ******* made the payments
+	
+
+Context:
+The respondent used two phones for the payments.
+
+Suggestion:
+Replace the second f_payphone entry with the f_payphone for the first entry, i.e.
+replace f_payphone = "*******" if f_payphone == "*******"
+
+Decision:
+Implemented suggestion.
+
+------------------------------------------------------------
+
+29. Respondent_id : 3b23107
+
+	- name ==  
+	- jikokoa == 1
+	- price_KSH == 2657
+	- bdmweekly == 226
+	- midline_date == 31 May 2019
+	- treatc2 == 1
+	- f_payphone == *******
+
+Context:
+The respondent lost their f_payphone number, but in the payments data for Dec and Apr,
+we see a payment of 226 KSH on 7 June 2019 from *******. It is very likely that 
+this payment was made by 3b23107.
+
+Suggestion: 
+Change the f_payphone in the payments data to f_payphone associated with 3b23107, i.e. 
+replace f_payphone = "*******" if f_payphone == "*******" & RESPONDENT == "*******"
+
+------------------------------------------------------------
+
+30. Respondent_id : 2271c36
+
+	- name == *******
+	- jikokoa == 1
+	- price_KSH == 1075
+	- bdmweekly == .
+	- midline_date == 21 May 2019
+	- treatc2 == 0
+	- f_payphone == *******
+	- f_payname == *******
+
+Context:
+No payments matched to the respondent. Following payment in the April data:
+
+	- f_payphone: *******
+	- RESPONDENT: PHONE_NOT_FOUND_*******
+	- AMOUNTPAID: 1075	
+	- PAYdate: 21may2019
+
+Suggestion:
+Change the f_payphone associated with the payment to the f_payphone of the respondent. 
+
+
+------------------------------------------------------------
+
+31. Respondent_id : zcz0a7f
+
+Context:
+The g_c5_other variable says "She called back the very day to be collected as she said she might forfeit in paying."
+
+Decisoin: 
+Drop.
+
+------------------------------------------------------------
+
+32. Respondent_id : 66bcf38
+
+Context: 
+The g_c5_other variable says "Return it to busara"
+
+Decision: 
+Drop. 
+
+------------------------------------------------------------
+
+33. Respondent_id : 4z63435
+
+Context: 
+The g_c5_other variable says "It was taken back because she was unable to pay"
+
+Decision: 
+Drop. 
+
+------------------------------------------------------------
+
+34. Respondent_id : 0f2fa7d
+
+Context: 
+The respondent bought the jiko, i.e. jikokoa == 1, had the jiko during the Visit3 endline, i.e. g_jikokoa == 1, but during the one-year endline, the respondent reports that the jiko was taken back, i.e. el1_g_c5_other == "The jiko was taken back by the field officer"
+
+Decisoin: 
+Drop.
+
+------------------------------------------------------------
+
+35. Respondent_id : d97cz8c
+
+Context: 
+The respondent bought the jiko, i.e. jikokoa == 1, had the jiko during the Visit3 endline, i.e. g_jikokoa == 1, but during the one-year endline, the respondent reports that the jiko was taken back for failure of payment, i.e. el1_g_c5_other == "Was repossessed by Busara when failed to pay"
+
+Decision:
+Drop. 
+
+------------------------------------------------------------
+
+36. Respondent_id : z95zab8
+
+Context:
+Visi2 == 1; Visit 3 == 0; Endline1 == 1; during one-year endline, the respondent claims that they never had the jikokoa, i.e. el1_g_c5_other == "I didn't purchase"; appears as having paid "None" in the April data
+
+Decision:
+Keep in payments data; drop from endline
+
+
+------------------------------------------------------------
+
+37. Respondent_id : 23afd44
+
+Context: 
+el1_g_c5_other == "I didn't have it before"; check updated data to see if respondent completed final 200 KSH of payment
+
+Decision:
+Keep in payments data; drop from endline
+
+------------------------------------------------------------
+
+38. Respondent_id : 798z07
+
+Context: 
+el1_g_c5_other == "Never got a Jikokoa, was away when the were being given"; however, the payment data shows the respondent bought a jikokoa
+
+Decision: 
+Keep in payments data; drop from endline
+
+------------------------------------------------------------
+
+39. Respondent_id : 3b23107
+
+Context: 
+Appears once in the December Payments Data and once in the March Payments Data, but under different numbers
+
+Decision: 
+
+Combine payments
+
+------------------------------------------------------------
+
+40. Respondent_id : 3d53c17
+
+Context: 
+FO filled in the wrong respondent's details 
+	
+Decision: 
+drop from survey data 
+
+------------------------------------------------------------
+
+41. Respondent_id : c436bc3
+
+Context:
+The phone that appears in the December payments data is *******
+The phone that appears in the March payments data update is *******
+I think that ******* is simply an incorrectly entered phone number, so the 
+entry associated with ******* from the March payments data should be changed
+
+Decision:
+replace PhoneNumber = "*******" if PhoneNumber == "*******"
+
+

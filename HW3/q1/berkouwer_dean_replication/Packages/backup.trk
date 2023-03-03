@@ -1,0 +1,454 @@
+* 00000013
+*! version 1.0.0
+* Do not erase or edit this file
+* It is used by Stata to track the ado and help
+* files you have installed.
+
+S http://fmwww.bc.edu/repec/bocode/i
+N ivreg2.pkg
+D 22 Dec 2021
+U 2
+d 'IVREG2': module for extended instrumental variables/2SLS and GMM estimation
+d 
+d  ivreg2 provides extensions to Stata's official ivregress and
+d newey. Its main capabilities: two-step feasible GMM estimation;
+d continuously updated GMM estimation (CUE); LIML and k-class
+d estimation; automatic output of the Hansen-Sargan or
+d Anderson-Rubin statistic for overidentifying restrictions; C
+d statistic test of exogeneity of subsets of instruments (orthog()
+d option); kernel-based autocorrelation-consistent (AC) and
+d heteroskedastic and autocorrelation-consistent (HAC) estimation,
+d with user-specified choice of kernel; Cragg's "heteroskedastic
+d OLS" (HOLS) estimator; default reporting of large-sample
+d statistics (z and chi-squared rather than t and F); small option
+d to report small-sample statistics; first-stage regression
+d reported with F-test of excluded instruments and R-squared with
+d included instruments "partialled-out"; enhanced Kleibergen-Paap
+d and Cragg-Donald tests for weak instruments, redundancy of
+d instruments, significance of endogenous regressors; two-way
+d clustering of standard errors;  Kiefer and Driscoll-Kraay
+d standard errors. ivreg2 can also be used for ordinary least
+d squares (OLS) estimation using the same command syntax as Stata's
+d official regress and newey. New in this version: ivreg2 now
+d supports factor variables. This is version 4.1.11 of ivreg2,
+d updated from that published in Stata Journal, 5(4), requiring
+d Stata 11.2 or better. Stata 8.2/9.2/10.2 users may use this
+d routine, which will  automatically call ivreg28, ivreg29, or
+d ivreg210, respectively. These versions are now included in the
+d ivreg2 package. Stata 7 users may use the Stata Journal version
+d of ivreg2, accessible via net search ivreg2.
+d 
+d KW: instrumental variables
+d KW: Sargan test
+d KW: robust estimation
+d KW: orthogonality
+d KW: GMM
+d KW: Hansen's J
+d KW: heteroskedastic OLS,
+d 
+d Requires: Stata version 11.2 and ranktest from SSC
+d 
+d Distribution-Date: 20200626
+d 
+d Author: Christopher F Baum, Boston College
+d Support: email baum@@bc.edu
+d 
+d Author: Mark E Schaffer, Heriot-Watt University
+d Support: email m.e.schaffer@@hw.ac.uk
+d 
+d Author: Steven Stillman, Free University of Bozen-Bolzano
+d Support: email  Steven.Stillman@@unibz.it
+d 
+f i/ivreg2.ado
+f i/ivreg2.sthlp
+f i/ivreg2_p.ado
+f l/livreg2.mlib
+f i/ivreg210.ado
+f i/ivreg210.sthlp
+f i/ivreg210_p.ado
+f i/ivreg29.ado
+f i/ivreg29.hlp
+f i/ivreg29_p.ado
+f i/ivreg29_cue.ado
+f i/ivreg28.ado
+f i/ivreg28.hlp
+f i/ivreg28_p.ado
+f i/ivreg28_cue.ado
+e
+S http://fmwww.bc.edu/repec/bocode/v
+N vallist.pkg
+D 12 Jan 2022
+U 3
+d 'VALLIST': module to list distinct values of a variable
+d 
+d vallist puts a list of the distinct values of varname, which may
+d be numeric or string, into returned macro r(list) and displays
+d that list. varname may be numeric or string. vallist is most
+d likely to be useful to programmers dealing with categorical or
+d counted data. This is version 3.1 of the software, updated from
+d that published in STB-60 by Nicholas J. Cox.
+d 
+d Author: Patrick Joly, Industry Canada
+d Support: email pat.joly@@utoronto.ca
+d 
+d Distribution-Date: 20030415
+f v\vallist.ado
+f v\vallist.hlp
+e
+S http://fmwww.bc.edu/repec/bocode/t
+N texresults.pkg
+D 12 Jan 2022
+U 4
+d 'TEXRESULTS': module to create external file of LaTeX macros with results
+d 
+d      texresults is a convenience command to easily store any
+d computed result to a LaTeX macro.  After running an  estimation
+d command in Stata, texresults can be used to create a new LaTeX
+d macro, which is stored in an   external text file.  This file
+d may be called from a LaTeX document in order to use those
+d results.
+d 
+d KW: LaTeX
+d KW: documents
+d KW: macro
+d 
+d Requires: Stata version 9
+d 
+d Distribution-Date: 20170409
+d 
+d Author: Alvaro Carril, University of Chile
+d Support: email acarril@@fen.uchile.cl
+d 
+f t\texresults.ado
+f t\texresults.sthlp
+e
+S http://fmwww.bc.edu/repec/bocode/r
+N rdrobust.pkg
+D 13 Jan 2022
+U 5
+d 'RDROBUST': module to provide robust data-driven inference in the regression-discontinuity design
+d 
+d   rdrobust implements local polynomial Regression Discontinuity
+d (RD) point estimators with     robust bias-corrected
+d confidence intervals and inference procedures developed in
+d Calonico,    Cattaneo and Titiunik (Econometrica, 2014),
+d Calonico, Cattaneo and Farrell (Stata Journal, 2017), and
+d Calonico,    Cattaneo, Farrell and Titiunik (JASA, 2018).  It
+d also computes alternative estimation and   inference
+d procedures available in the literature.  Companion commands
+d are: rdbwselect for data-driven bandwidth selection, and rdplot
+d for      data-driven RD plots (see Calonico, Cattaneo and
+d Titiunik (JASA, 2015) for details).
+d 
+d KW: regression discontinuity
+d KW: robust inference
+d 
+d Requires: Stata version 13.1
+d 
+d Distribution-Date: 20200406
+d 
+d Author: Sebastian Calonico, Department of Economics, University of Miami
+d Support: email scalonico@@bus.miami.edu
+d 
+d Author: Matias D. Cattaneo, Department of Economics and Department of Statistics, University of Michigan
+d Support: email cattaneo@@umich.edu
+d 
+d Author:  Max H. Farrell, Booth School of Business, University of Chicago
+d Support: email max.farrell@@chicagobooth.edu
+d 
+d Author: Rocio Titiunik, Department of Political Science, University of Michigan
+d Support: email  titiunik@@umich.edu
+d 
+f r/rdrobust.ado
+f r/rdrobust.sthlp
+f r/rdbwselect.ado
+f r/rdbwselect.sthlp
+f r/rdplot.ado
+f r/rdplot.sthlp
+f r/rdbwselect_2014.ado
+f r/rdbwselect_2014.sthlp
+f r/rdbwselect_2014_kconst.ado
+f r/rdrobust_bw.mo
+f r/rdrobust_kweight.mo
+f r/rdrobust_res.mo
+f r/rdrobust_vce.mo
+e
+S http://fmwww.bc.edu/repec/bocode/b
+N binscatter.pkg
+D 13 Jan 2022
+U 6
+d 'BINSCATTER': module to generate binned scatterplots
+d 
+d  binscatter generates binned scatterplots, and is optimized for
+d speed in large  datasets.  Binned scatterplots provide a
+d non-parametric way of visualizing the relationship between two
+d variables.  With a large number of observations, a scatterplot
+d that plots every data point would become too crowded to interpret
+d visually.  binscatter groups the x-axis variable into equal-sized
+d bins, computes the mean of the x-axis and y-axis variables within
+d each bin, then creates a scatterplot of these data points.  It
+d provides built-in options to control for covariates before
+d plotting the relationship.  It will also plot fit lines based on
+d the underlying data, and can automatically handle regression
+d discontinuities.
+d 
+d KW: scatterplot
+d KW: data description
+d KW: regression discontinuity
+d 
+d Requires: Stata version 12.1
+d 
+d Distribution-Date: 20131124
+d 
+d Author: Michael Stepner
+d Support: email michaelstepner@@gmail.com
+d 
+f b/binscatter.ado
+f b/binscatter.sthlp
+e
+S http://fmwww.bc.edu/repec/bocode/e
+N estout.pkg
+D 13 Jan 2022
+U 7
+d 'ESTOUT': module to make regression tables
+d 
+d  estout produces a table of regression results from one or
+d several models for use with spreadsheets, LaTeX, HTML, or a
+d word-processor table. eststo stores a quick copy of the active
+d estimation results for later tabulation. esttab is a wrapper for
+d estout. It displays a pretty looking publication-style regression
+d table without much typing. estadd adds additional results to the
+d e()-returns for one or several models previously fitted and
+d stored. This package subsumes the previously circulated esto,
+d esta, estadd,  and estadd_plus. An earlier version of estout is
+d available  as estout1.
+d 
+d KW: estimates
+d KW: LaTeX
+d KW: HTML
+d KW: word processor
+d KW: output
+d 
+d Requires: Stata version 8.2
+d 
+d Distribution-Date: 20210523
+d 
+d Author: Ben Jann, University of Bern
+d Support: email jann@@soz.unibe.ch
+d 
+f _/_eststo.ado
+f _/_eststo.hlp
+f e/estadd.ado
+f e/estadd.hlp
+f e/estout.ado
+f e/estout.hlp
+f e/eststo.ado
+f e/eststo.hlp
+f e/estpost.ado
+f e/estpost.hlp
+f e/esttab.ado
+f e/esttab.hlp
+e
+S http://www.stata-journal.com/software/sj5-4
+N dm88_1.pkg
+D 19 Jan 2022
+U 8
+d SJ5-4 dm88_1.  Update:  Renaming variables, multiply and...
+d Update:  Renaming variables, multiply and systematically
+d by Nicholas J. Cox, Durham University, UK
+d    Jeroen Weesie, Utrecht University, Netherlands
+d Support:  n.j.cox@@durham.ac.uk, j.weesie@@fss.uu.nl
+d After installation, type help ^renvars^
+f r/renvars.ado
+f r/renvars.hlp
+e
+S http://fmwww.bc.edu/repec/bocode/d
+N datacheck.pkg
+D 21 Mar 2022
+U 9
+d 'DATACHECK': module to perform data checks and produce informative output
+d 
+d   datacheck is a simple utility for carrying out data checks and
+d reporting on problems or  errors in a dataset. A datacheck
+d statement specifies a condition which one  or more variables in
+d the dataset must meet. If the data 'fail' the check, the program
+d displays meaningful and customizable output identifying the
+d problem observation(s). In contrast to assert, datacheck does not
+d halt Stata or produce any errors, so a number of datacheck
+d statements can be included in a do-file to run in sequence. This
+d allows a suite of data checks to be performed in a single run,
+d with the customized output serving as a user-friendly log
+d detailing problems with the data.
+d 
+d KW:  data management
+d KW: data check
+d KW: consistency
+d KW: consistency check
+d KW: data cleaning
+d KW: check
+d KW: verify
+d KW: assert
+d KW: assertk
+d 
+d Requires: Stata version 8.2
+d 
+d Distribution-Date: 20110220
+d 
+d Author:  Krishnan Bhaskaran,  London School of Hygiene and Tropical Medicine, UK
+d Support: email  Krishnan.bhaskaran@@lshtm.ac.uk
+d 
+f d/datacheck.ado
+f d/datacheck.hlp
+e
+S http://fmwww.bc.edu/repec/bocode/t
+N tabout.pkg
+D 22 Mar 2022
+U 10
+d 'TABOUT': module to export publication quality cross-tabulations
+d 
+d  tabout is a table building program for oneway and twoway
+d tables of frequencies and percentages, and for summary tables. It
+d produces publication quality tables for export to a text file.
+d These tables can then be used with spreadsheets, word processors,
+d web browsers or compilers like LaTeX. The tables produced by
+d tabout allow multiple panels so that a number of variables can be
+d included in the one table. tabout also provides standard errors
+d and confidence intervals, as well as a range of table statistics
+d (chi2 etc). The output from tabout matches Stata's tabulate, most
+d of tabstat and some of table.
+d 
+d KW: tables
+d KW: latex
+d KW: html
+d KW: delimited text
+d 
+d Requires: Stata version 9.2
+d 
+d Distribution-Date: 20190316
+d 
+d Author: Ian Watson , Macquarie University, Australia
+d Support: email mail@@ianwatson.com.au
+d 
+f t/tabout.ado
+f t/tabstatout.ado
+f t/tabout.hlp
+f f/figout.ado
+f f/figout.hlp
+e
+S http://fmwww.bc.edu/repec/bocode/n
+N nmissing.pkg
+D 22 Mar 2022
+U 11
+d 'NMISSING': module to show numbers of missing or present values
+d 
+d nmissing lists the number of missing values in each  variable
+d specified (or optionally in each observation).  npresent lists
+d the number of present (non-missing)  values in each variable
+d specified (or optionally in  each observation). This version is
+d an update of that published in Stata Journal, 3(4).
+d 
+d KW:  missing values
+d KW: data management
+d 
+d Requires: Stata version 8.0
+d 
+d Distribution-Date: 20050921
+d 
+d Author: Nicholas J. Cox, Durham University
+d Support: email N.J.Cox@@durham.ac.uk
+d 
+f n/nmissing.ado
+f n/nmissing.hlp
+f n/npresent.ado
+f n/npresent.hlp
+e
+S https://raw.githubusercontent.com/PovertyAction/high-frequency-checks/master/ado
+N ipacheck.pkg
+D 23 Mar 2022
+U 12
+d 'IPACHECK': IPA Stata high-frequency check commands
+d These commands perform common data quality checks useful
+d during the data collection and cleaning phases of field
+d research.
+d 
+d KW: data management
+d KW: data quality
+d KW: data entry
+d 
+d Requires: Stata version 14.1
+d 
+d Distribution-Date: 20170407
+d 
+d Authors: Christopher Boyer, Innovations for Poverty Action
+d Support: researchsupport@poverty-action.org
+f i/ipacheck.ado
+f i/ipacheck.sthlp
+f i/ipadoheader.ado
+f i/ipadoheader.sthlp
+f i/ipacheckimport.ado
+f i/ipacheckcomplete.ado
+f i/ipacheckcomplete.sthlp
+f i/ipacheckdups.ado
+f i/ipacheckdups.sthlp
+f i/ipacheckids.ado
+f i/ipacheckids.sthlp
+f i/ipacheckconsent.ado
+f i/ipacheckconsent.sthlp
+f i/ipachecknomiss.ado
+f i/ipachecknomiss.sthlp
+f i/ipacheckfollowup.ado
+f i/ipacheckfollowup.sthlp
+f i/ipachecklogic.ado
+f i/ipachecklogic.sthlp
+f i/ipacheckallmiss.ado
+f i/ipacheckallmiss.sthlp
+f i/ipacheckconstraints.ado
+f i/ipacheckconstraints.sthlp
+f i/ipacheckspecify.ado
+f i/ipacheckspecify.sthlp
+f i/ipacheckdates.ado
+f i/ipacheckdates.sthlp
+f i/ipacheckoutliers.ado
+f i/ipacheckoutliers.sthlp
+f i/ipacheckenum.ado
+f i/ipacheckenum.sthlp
+f i/ipacheckresearch.ado
+f i/ipacheckresearch.sthlp
+f i/ipacheckreadreplace.ado
+f i/ipacheckreadreplace.sthlp
+f i/ipatracksummary.ado
+f i/ipatracksummary.sthlp
+f p/progreport.ado
+f p/progreport.sthlp
+f i/ipatrackversions.ado
+f i/ipatrackversions.sthlp
+f i/ipachecktextaudit.ado
+f i/ipachecktextaudit.sthlp
+f i/ipacheckcomment.ado
+f i/ipacheckcomment.sthlp
+e
+S http://fmwww.bc.edu/repec/bocode/g
+N groups.pkg
+D 25 Mar 2022
+U 13
+d 'GROUPS': module to list group frequencies
+d 
+d  groups lists the distinct groups of varlist occurring  in the
+d dataset and their frequencies. groups is a wrapper  for list and
+d offers several handles for controlling the  kinds of frequencies
+d shown and their appearance.
+d 
+d KW:  tabulations
+d KW: list
+d 
+d Requires: Stata version 8.0
+d 
+d 
+d Author: Nicholas J. Cox, Durham University
+d Support: email N.J.Cox@@durham.ac.uk
+d 
+d Distribution-Date: 20180224
+d 
+f g/groups.ado
+f g/groups.sthlp
+e
