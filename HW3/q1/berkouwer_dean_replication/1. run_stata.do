@@ -4,7 +4,7 @@ set more off
 pause off
  
 /*1. Set root path for the project */ /*Change to the root in your computer */
-global main "/Users/jdean/Dropbox/Cookstoves Research/Main/Replication/Public"
+global main "C:/Users/steve/OneDrive/Winter 2023/+Metrics 2 - Applied Microeconometrics/Homework/Applied Microeconometrics/HW3/q1/berkouwer_dean_replication"
 
 /*2. Create folders */
 cap mkdir "${main}/Data/Med/"
